@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">InputControls_4_2</string>
+    <string-array name="students_names">
+        <item>Fatima</item>
+        <item>Makram</item>
+        <item>Marwa</item>
+        <item>Farah</item>
+    </string-array>
+</resources>

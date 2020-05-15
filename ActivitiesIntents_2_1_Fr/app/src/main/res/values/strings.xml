@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ActivitiesIntents_2_1_Fr</string>
+    <string name="label_button_send">Send</string>
+    <string name="label_button_reply">Reply</string>
+</resources>

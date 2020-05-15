@@ -1,0 +1,2 @@
+rootProject.name='MISEn2020'
+include ':app'
