@@ -1,5 +1,6 @@
 package com.bilalsaid.activitiesintents_2_1_en;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,8 +15,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String MESSAGE_KEY = MainActivity.class.getCanonicalName() + ".extra.My_Message_Key";
     // instead of "com.bilalsaid.activitiesintents_2_1_en.extra.My_Message_Key";
     public static final int GET_REPLY_REQUEST_CODE = 0;
+    public static final String REPLY_VISIBILITY_STATE_KEY = "VISIBILITY_STATE";
+    public static final String REPLY_TEXT_STATE_KEY = "REPLY_TEXT_STATE";
     private TextView replyTextView;
     private TextView replyHeaderTextView;
+    private EditText messageEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +27,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         replyTextView = findViewById(R.id.text_reply);
         replyHeaderTextView = findViewById(R.id.text_header_reply);
+        messageEditText = findViewById(R.id.editText_message);
+
+        if(savedInstanceState != null)
+        {
+            int previousVisibility = savedInstanceState.getInt(REPLY_VISIBILITY_STATE_KEY);
+            replyTextView.setVisibility(previousVisibility);
+            replyHeaderTextView.setVisibility(previousVisibility);
+            String previousReplyText = savedInstanceState.getString(REPLY_TEXT_STATE_KEY);
+            replyTextView.setText(previousReplyText);
+        }
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(REPLY_VISIBILITY_STATE_KEY, replyTextView.getVisibility());
+        outState.putString(REPLY_TEXT_STATE_KEY, replyTextView.getText().toString());
+    }
+
 
     public void openSecondActivity(View view) {
         Intent intent = new Intent(this, SecondActivity.class);
-        EditText messageEditText = findViewById(R.id.editText_message);
         String messageToSend = messageEditText.getText().toString();
         intent.putExtra(MESSAGE_KEY, messageToSend);
         //startActivity(intent);
@@ -49,5 +70,6 @@ public class MainActivity extends AppCompatActivity {
             replyTextView.setVisibility(View.VISIBLE);
             replyHeaderTextView.setVisibility(View.VISIBLE);
         }
+        messageEditText.setText("");
     }
 }
