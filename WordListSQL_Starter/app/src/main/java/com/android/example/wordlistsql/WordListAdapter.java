@@ -54,10 +54,12 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     private final LayoutInflater mInflater;
     Context mContext;
+    private WordListOpenHelper dbHelper;
 
-    public WordListAdapter(Context context) {
+    public WordListAdapter(Context context, WordListOpenHelper wordListOpenHelper) {
         mInflater = LayoutInflater.from(context);
         mContext = context;
+        dbHelper = wordListOpenHelper;
     }
 
     @Override
@@ -68,13 +70,13 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     @Override
     public void onBindViewHolder(WordViewHolder holder, int position) {
-        holder.wordItemView.setText("placeholder");
+        WordItem wordItem = dbHelper.getWordAtPosition(position);
+        holder.wordItemView.setText(wordItem.getWord());
     }
 
     @Override
     public int getItemCount() {
-        // Placeholder so we can see some mock data.
-        return 10;
+        return (int) dbHelper.count();
     }
 }
 
