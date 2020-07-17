@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HadathFinal2015</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_contacts_list">ContactsList</string>
+    <string name="title_activity_add_contact">AddContact</string>
+
+
+</resources>

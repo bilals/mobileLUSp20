@@ -74,6 +74,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     @Override
     public void onBindViewHolder(WordViewHolder holder, int position) {
+
         WordItem current = mDB.query(position);
         holder.wordItemView.setText(current.getWord());
         // Keep a reference to the view holder for the click listener
