@@ -95,6 +95,7 @@ public class WordListOpenHelper extends SQLiteOpenHelper {
      */
     public WordItem query(int position) {
         String query = "SELECT  * FROM " + WORD_LIST_TABLE +
+                //"WHERE " + KEY_WORD + " LIKE"
                 " ORDER BY " + KEY_WORD + " ASC " +
                 "LIMIT " + position + ",1";
 
